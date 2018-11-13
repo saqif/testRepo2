@@ -1,0 +1,188 @@
+Data Structure
+=======================
+Shadman Saleh Shahriyar
+=======================
+
+what is underline data structure?
+- growable array or dynamic array
+- they use consecutive memory location
+
+what is collection?
+- collection is an interface. Collection of individual object.
+
+what is interface?
+- collection of unimplemented method. 
+
+Cursor interface
+- 1. Legacy cursor -> Enamuration
+- 2. universal cursor -> Iterator
+
+Difference between Enamuration and Iterator?
+- Enamuration is only for legacy classes
+- Enamuration can only retrive data it can not remove any data
+- Iterator works with all List classes
+- Iterator can retrive and remove data
+
+Difference between Iterator and ListIterator?
+- Iterator can retrive and remove data but it can not go back and add data while iterating
+- ListIterator has add, set and remove method and it can go back while iterating and can set or add any data while iterating.  
+
+What is the cons of Enamuration?
+- It's available only for legacy class
+- it can not be removed
+
+Collection interface itself implement two more interface
+- interface Collection extends Serializable, Clonable{}
+- another one is RandomAccess it's called Mark up interface
+
+Methods in collection interface
+-> There are 12 methods
+- 1.  boolean add(Object o)
+- 2.  boolean addAll(Collection c)
+- Example:
+  --- Vector v = new Vector();
+  --- v.add(3);
+  --- Vector v1 = new Vector();
+  --- v1.addAll(v);
+- 3.  boolean remove(Object o)
+- 4.  boolean removeAll(Collection c)
+- 5.  boolean retainAll(Collection c) //removing everything from parent and keep everything you store from child
+- 6.  void clear()
+- 7.  int size()
+- 8.  boolean Contains(Object o)
+- 9.  boolean ContainsAll(Collection c)
+- 10. Object[] toArray()
+- 11. Iterator iterator() //iterate through any object - another name universal cursor
+- 12. boolean isEmpty()
+
+for more info https://www.tutorialspoint.com/java/java_collection_interface.htm
+
+
+=================================Collection Tree========================
+
+									Collection(i)
+										|
+									  List(i)
+									    |
+			   -----------------------------------------------------
+			   |                        |                          |
+		   ArrayList(c)            LinkedList(c)                Vector(c)
+	 	 by default it   										   |
+      will take 10 space if 									 Stack(c)
+	we want to add more element
+   after the size it will create
+10x(3/2)+1 size into that arraylist
+
+
+List
+------
+- 1. boolean add(Object o)
+- 2. boolean addAll(Collection c)
+- 3. boolean remove(Object o)
+- 4. Object get(int index)
+- 5. Object set(int index, Object o)
+- 6. int indexOf(Object o)
+- 7. int lastIndexOf(Object o)
+- 8. ListIterator listIterator()
+
+ListIterator
+------------
+3 methods for forward Direction
+- 1. hasNext()
+- 2. next()
+- 3. nextIndex()
+
+3 methods for backward Direction
+- hasPrevious()
+- previous()
+- previousIndex()
+
+3 other methods
+- add()
+- set()
+- remove()
+
+Iterator methods
+-----------------
+- boolean hasNext()
+- Object next()
+- void remove()
+
+Enamuration methods
+-------------------
+- boolean hasMoreElement()
+- Object nextElement()
+
+for more info about Iterator https://www.geeksforgeeks.org/iterators-in-java/
+for more info http://tutorials.jenkov.com/java-collections/list.html
+
+Why we use List?
+- if requirement is "Duplicate value is allowed" and insertion order will be preserved.
+
+if we have retrieval operation more frequently than we go for ArrayList or Vector.
+this two collection implements RandomAccess interface. 
+
+Which one will be better?
+- ArrayList. Because ArrayList is not synchronized.
+- If you have to manipulate data like insertion, removal of any value ArrayList can be the worst choice.
+
+
+									Collection(i)
+										|
+									   Set(i)
+									    |
+			   -----------------------------------------------------
+			   |                        |                          |
+		   HashSet(c)            LinkedHashSet(c)              SortedSet(i)
+		   (16 space)											   |
+		   													  NavigableSet(i)
+		   													  	   |
+		   													   TreeSet(c)
+
+
+Why we use HashSet?
+- if requirement is "Duplicate value is not allowed" and insertion order will not be preserved.
+
+Why we use LinkedHashSet?
+- if requirement is "Duplicate value is not allowed" but insertion order will be preserved.
+
+Why HashSet do not follow insertion order?
+How it will take space in memory?
+- by hashing concept. Every object has it's hashing value. One hash method will be generated and it will give the index number.
+
+how Set will check the duplicate value?
+- by equal method whenever we call add method. System will check the duplicate value internally by equal method when we want to store any value.
+
+What is underline data structure for hashSet?
+- hashMap
+
+How to avoid collision between two same kind of Object Hashcode value?
+- By chaining concept. 
+
+what is loadFactor?
+- If the the memory is 75% full then it will generate next memory location by 16*(3/2)+1 . 
+
+How many constructor hashset has?
+- HashSet() - default 16 space and fill ratio 75%
+- HashSet(int cap) - given capacity with fill ratio 75%
+- HashSet(int cap, float loadFactory) - given capacity with given fill ratio
+- HashSet(Collection c)
+
+Tree
+=======
+- only any class starts with Tree they will take homogeneous. By default tree will be organized as ascending order.
+- Under line data structure - default sorting order or multiple 
+
+TreeSet methods():
+- first()
+- last()
+- HeadSet(Object o)
+- TailSet(Object o)
+- Subset(Object start, Object finish)
+- ceiling(Object o)
+- comparator() - customized sorting order - multiple sorting concept - java.util
+	-- compare()
+	-- equals() 
+- comparable() - default sorting order - ascending - single sorting concept - java.lang 
+	-- compareTo() 
+
